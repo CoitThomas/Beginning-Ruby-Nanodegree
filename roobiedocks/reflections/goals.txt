@@ -1,1 +1,11 @@
-I took a couple of computer science classes when I was in college. I really enjoyed them, but did not pursue the field as a career. Over time, I decided that the tech sector is really what I want to do. During the last 6 months I took what I had already learned in college and pushed myself to learn Python, some linux, a little SQL, and git. With a lot of time and effort, mentorship from a friend in the field, and a little bit of luck, I was fortunate enough to get a job as a junior level software engineer. This is all fantastic and wonderful except they don't really use Python. They use Ruby. And more specifically, they use Ruby on Rails. My goal is to become proficient in Ruby and Rails so that I can perform well at my new job.   
+I took a couple of computer science classes when I was in college. I
+really enjoyed them, but did not pursue the field as a career. Over time, I
+decided that the tech sector is really what I want to do. During the last 6
+months I took what I had already learned in college and pushed myself to
+learn Python, some linux, a little SQL, and git. With a lot of time and
+effort, mentorship from a friend in the field, and a little bit of luck, I was
+fortunate enough to get a job as a junior level software engineer. This is
+all fantastic and wonderful except they don't really use Python. They use
+Ruby. And more specifically, they use Ruby on Rails. My goal is to
+become proficient in Ruby and Rails so that I can perform well at my
+new job.   

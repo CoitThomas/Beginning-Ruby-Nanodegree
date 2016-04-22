@@ -1,5 +1,11 @@
-I took a few computer science classes during and after college. During college I learned the very basics of computer science through programming in C++. After college I tried to take online classes and learn Python.
+I took a few computer science classes during and after college. During
+college I learned the very basics of computer science through
+programming in C++. After college I tried to take online classes and learn
+Python.
+
+
 
 1) Experience programming in Python.
+
 
 2) Experience programming in C++.

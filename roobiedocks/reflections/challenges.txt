@@ -1,4 +1,10 @@
-1) I am pretty slow at using and navigating linux and vim so I am concerned about not only having to learn Ruby, but also about becoming proficient with linux.
+1) I am pretty slow at using and navigating linux and vim so I am
+concerned about not only having to learn Ruby, but also about
+becoming proficient with linux.
 
-2) I have done a fair number of small scale projects, but I have never done what I imagine to be a "large scale" project. Nor have I worked on a project with other people before. I am concerned about overcoming both of those obstacles.
+2) I have done a fair number of
+small scale projects, but I have never done what I imagine to be a
+"large scale" project. Nor have I worked on a project with other
+people before. I am concerned about overcoming both of those
+obstacles.
  
