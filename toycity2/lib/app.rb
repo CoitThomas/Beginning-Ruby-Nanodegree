@@ -30,30 +30,59 @@ end
 
 # Print "Products" in ascii art
 def print_products_header
-  puts "                     _            _       "
-  puts "                    | |          | |      "
-  puts " _ __  _ __ ___   __| |_   _  ___| |_ ___ "
+  puts "                     _            _"
+  puts "                    | |          | |"
+  puts " _ __  _ __ ___   __| |_   _  ___| |_ ___"
   puts "| '_ \\| '__/ _ \\ / _` | | | |/ __| __/ __|"
   puts "| |_) | | | (_) | (_| | |_| | (__| |_\\__ \\"
   puts "| .__/|_|  \\___/ \\__,_|\\__,_|\\___|\\__|___/"
-  puts "| |                                       "
-  puts "|_|                                       "
+  puts "| |"
+  puts "|_|"
   puts
 end
 
-# For each product in the data set:
-	# Print the name of the toy
+def print_with_borders(text)
+  text.length.times {print "="}
+  puts
+  puts text
+  text.length.times {print "="}
+  puts
+end
+
+def print_products_report
+  # For each product in the data set:
+  $products_hash["items"].each do |toy|
+    # Print the name of the toy
+	print_with_borders(toy["title"])
+    
 	# Print the retail price of the toy
+	retail_price = toy["full-price"]
+	puts "Retail Price: $#{retail_price}"
+    
 	# Calculate and print the total number of purchases
+	purchases = toy["purchases"].length
+	puts "Purchases: #{purchases}"
+
 	# Calculate and print the total amount of sales
+	sales_revenue = toy["purchases"].inject(0) { |sales_total, sale| sales_total + sale["price"] }
+	puts "Sales Revenue: $#{sales_revenue}"
+    
 	# Calculate and print the average price the toy sold for
+	avg_price = sales_revenue/purchases
+	puts "Average Price: $#{avg_price}"
+    
 	# Calculate and print the average discount (% or $) based off the average sales price
+	avg_discount = ((1 - avg_price.to_f / retail_price.to_f) * 100).round(2)
+    puts "Average Discount: #{avg_discount}%"
+    puts
+  end
+end
 
 # Print "Brands" in ascii art
 def print_brands_header
-  puts " _                         _     "
-  puts "| |                       | |    "
-  puts "| |__  _ __ __ _ _ __   __| |___ "
+  puts " _                         _"
+  puts "| |                       | |"
+  puts "| |__  _ __ __ _ _ __   __| |___"
   puts "| '_ \\| '__/ _` | '_ \\ / _` / __|"
   puts "| |_) | | | (_| | | | | (_| \\__ \\"
   puts "|_.__/|_|  \\__,_|_| |_|\\__,_|___/"
@@ -71,6 +100,7 @@ def start
   print_sales_header
   print_date
   print_products_header
+  print_products_report
   print_brands_header
 end
 	
