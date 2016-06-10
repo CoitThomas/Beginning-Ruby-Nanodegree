@@ -11,42 +11,40 @@ end
 
 # Print "Sales Report" in ascii art
 def print_sales_header
-  puts " _____       _            ______                      _"
-  puts "/  ___|     | |           | ___ \\                    | |"
-  puts "\\ `--.  __ _| | ___  ___  | |_/ /___ _ __   ___  _ __| |_"
-  puts " `--. \\/ _` | |/ _ \\/ __| |    // _ \\ '_ \\ / _ \\| '__| __|"
-  puts "/\\__/ / (_| | |  __/\\__ \\ | |\\ \\  __/ |_) | (_) | |  | |_"
-  puts "\\____/ \\__,_|_|\\___||___/ \\_| \\_\\___| .__/ \\___/|_|   \\__|"
-  puts "====================================| |==================="
-  puts "                                    |_|"
+  $report_file.write(" _____       _            ______                      _\n")
+  $report_file.write("/  ___|     | |           | ___ \\                    | |\n")
+  $report_file.write("\\ `--.  __ _| | ___  ___  | |_/ /___ _ __   ___  _ __| |_\n")
+  $report_file.write(" `--. \\/ _` | |/ _ \\/ __| |    // _ \\ '_ \\ / _ \\| '__| __|\n")
+  $report_file.write("/\\__/ / (_| | |  __/\\__ \\ | |\\ \\  __/ |_) | (_) | |  | |_\n")
+  $report_file.write("\\____/ \\__,_|_|\\___||___/ \\_| \\_\\___| .__/ \\___/|_|   \\__|\n")
+  $report_file.write("====================================| |===================\n")
+  $report_file.write("                                    |_|\n")
 end
 
 # Print today's date
 def print_date
   date = Time.new
-  puts "Today's Date: #{date.month}/#{date.day}/#{date.year}"
-  puts
+  $report_file.write("Today's Date: #{date.month}/#{date.day}/#{date.year}\n")
+  $report_file.write("\n")
 end
 
 # Print "Products" in ascii art
 def print_products_header
-  puts "                     _            _"
-  puts "                    | |          | |"
-  puts " _ __  _ __ ___   __| |_   _  ___| |_ ___"
-  puts "| '_ \\| '__/ _ \\ / _` | | | |/ __| __/ __|"
-  puts "| |_) | | | (_) | (_| | |_| | (__| |_\\__ \\"
-  puts "| .__/|_|  \\___/ \\__,_|\\__,_|\\___|\\__|___/"
-  puts "| |"
-  puts "|_|"
-  puts
+  $report_file.write("                     _            _\n")
+  $report_file.write("                    | |          | |\n")
+  $report_file.write(" _ __  _ __ ___   __| |_   _  ___| |_ ___\n")
+  $report_file.write("| '_ \\| '__/ _ \\ / _` | | | |/ __| __/ __|\n")
+  $report_file.write("| |_) | | | (_) | (_| | |_| | (__| |_\\__ \\\n")
+  $report_file.write("| .__/|_|  \\___/ \\__,_|\\__,_|\\___|\\__|___/\n")
+  $report_file.write("| |\n")
+  $report_file.write("|_|\n")
+  $report_file.write("\n")
 end
 
 def print_with_borders(text)
-  text.length.times {print "="}
-  puts
-  puts text
-  text.length.times {print "="}
-  puts
+  $report_file.write("=" * text.length + "\n")
+  $report_file.write(text + "\n")
+  $report_file.write("=" * text.length + "\n")
 end
 
 def print_products_report
@@ -57,43 +55,68 @@ def print_products_report
     
 	# Print the retail price of the toy
 	retail_price = toy["full-price"]
-	puts "Retail Price: $#{retail_price}"
+	$report_file.write("Retail Price: $#{retail_price}\n")
     
 	# Calculate and print the total number of purchases
 	purchases = toy["purchases"].length
-	puts "Purchases: #{purchases}"
+	$report_file.write("Purchases: #{purchases}\n")
 
 	# Calculate and print the total amount of sales
 	sales_revenue = toy["purchases"].inject(0) { |sales_total, sale| sales_total + sale["price"] }
-	puts "Sales Revenue: $#{sales_revenue}"
+	$report_file.write("Sales Revenue: $#{sales_revenue}\n")
     
 	# Calculate and print the average price the toy sold for
 	avg_price = sales_revenue/purchases
-	puts "Average Price: $#{avg_price}"
+	$report_file.write("Average Price: $#{avg_price}\n")
     
 	# Calculate and print the average discount (% or $) based off the average sales price
 	avg_discount = ((1 - avg_price.to_f / retail_price.to_f) * 100).round(2)
-    puts "Average Discount: #{avg_discount}%"
-    puts
+    $report_file.write("Average Discount: #{avg_discount}%\n")
+    $report_file.write("\n")
   end
 end
 
 # Print "Brands" in ascii art
 def print_brands_header
-  puts " _                         _"
-  puts "| |                       | |"
-  puts "| |__  _ __ __ _ _ __   __| |___"
-  puts "| '_ \\| '__/ _` | '_ \\ / _` / __|"
-  puts "| |_) | | | (_| | | | | (_| \\__ \\"
-  puts "|_.__/|_|  \\__,_|_| |_|\\__,_|___/"
-  puts
+  $report_file.write(" _                         _\n")
+  $report_file.write("| |                       | |\n")
+  $report_file.write("| |__  _ __ __ _ _ __   __| |___\n")
+  $report_file.write("| '_ \\| '__/ _` | '_ \\ / _` / __|\n")
+  $report_file.write("| |_) | | | (_| | | | | (_| \\__ \\\n")
+  $report_file.write("|_.__/|_|  \\__,_|_| |_|\\__,_|___/\n")
+  $report_file.write("\n")
 end
 
-# For each brand in the data set:
-	# Print the name of the brand
+def print_brands_report
+  brands = $products_hash["items"].map { |item| item["brand"] }.uniq
+  # For each brand in the data set:
+  brands.each do |brand|
+    # Print the name of the brand
+	print_with_borders(brand)
+	
+	brand_info = $products_hash["items"].select { |item| item["brand"] == brand }
+
+    toy_count = 0
+    total_item_cost = 0
+    total_revenue = 0
+
+    brand_info.each do |item|
+      toy_count += item["stock"]
+      total_item_cost += item["full-price"].to_f
+	  item["purchases"].each do |sale|
+	    total_revenue += sale["price"]
+      end
+	end
+
 	# Count and print the number of the brand's toys we stock
+	$report_file.write("Toys in Stock: #{toy_count}\n")
 	# Calculate and print the average price of the brand's toys
-	# Calculate and print the total sales volume of all the brand's toys combined
+	$report_file.write("Average toy price: $#{(total_item_cost/brand_info.length).round(2)}\n")
+    # Calculate and print the total sales volume of all the brand's toys combined
+	$report_file.write("Total revenue: $#{total_revenue.round(2)}\n")
+	$report_file.write("\n")
+  end
+end
 
 def start
   setup_files
@@ -102,6 +125,7 @@ def start
   print_products_header
   print_products_report
   print_brands_header
+  print_brands_report
 end
 	
 start
