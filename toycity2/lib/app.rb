@@ -6,7 +6,7 @@ def setup_files
   path = File.join(File.dirname(__FILE__), '../data/products.json')
   file = File.read(path)
   $products_hash = JSON.parse(file)
-  $report_file = File.new("report.txt", "w+")
+  $report_file = File.new("../report.txt", "w+")
 end
 
 # Print "Sales Report" in ascii art
@@ -47,33 +47,48 @@ def print_with_borders(text)
   $report_file.write("=" * text.length + "\n")
 end
 
-def print_products_report
-  # For each product in the data set:
+def products_data
   $products_hash["items"].each do |toy|
-    # Print the name of the toy
-	print_with_borders(toy["title"])
-    
-	# Print the retail price of the toy
-	retail_price = toy["full-price"]
-	$report_file.write("Retail Price: $#{retail_price}\n")
-    
-	# Calculate and print the total number of purchases
-	purchases = toy["purchases"].length
-	$report_file.write("Purchases: #{purchases}\n")
-
-	# Calculate and print the total amount of sales
-	sales_revenue = toy["purchases"].inject(0) { |sales_total, sale| sales_total + sale["price"] }
-	$report_file.write("Sales Revenue: $#{sales_revenue}\n")
-    
-	# Calculate and print the average price the toy sold for
-	avg_price = sales_revenue/purchases
-	$report_file.write("Average Price: $#{avg_price}\n")
-    
-	# Calculate and print the average discount (% or $) based off the average sales price
-	avg_discount = ((1 - avg_price.to_f / retail_price.to_f) * 100).round(2)
-    $report_file.write("Average Discount: #{avg_discount}%\n")
-    $report_file.write("\n")
+    toy_data = calculate_product_data(toy)
+    print_product_data(toy_data)
   end
+end
+
+def calculate_product_data(toy)
+  toy_data = {}
+
+  # Get the name of the toy
+  toy_data['name'] = toy["title"]
+  # Get the retail price of the toy
+  toy_data['retail price'] = toy["full-price"]
+  # Calculate the total number of purchases
+  toy_data['purchases'] = toy["purchases"].length
+  # Calculate the total amount of sales
+  toy_data['sales revenue'] = 
+    toy["purchases"].inject(0) { |sales_total, sale| sales_total + sale["price"] }
+  # Calculate the average price the toy sold for
+  toy_data['average price'] = toy_data['sales revenue']/toy_data['purchases']
+  # Calculate the average discount (% or $) based off the average sales price
+  toy_data['average discount'] = 
+    ((1 - toy_data['average price'].to_f / toy_data['retail price'].to_f) * 100).round(2)
+
+  toy_data
+end
+
+def print_product_data(toy_data)
+  # Print the name of the toy
+  print_with_borders(toy_data['name'])
+  # Print the retail price of the toy
+  $report_file.write("Retail Price: $#{toy_data['retail price']}\n")
+  # Print the total number of purchases
+  $report_file.write("Purchases: #{toy_data['purchases']}\n")
+  # Print the total amount of sales
+  $report_file.write("Sales Revenue: $#{toy_data['sales revenue']}\n")
+  # Print the average price the toy sold for
+  $report_file.write("Average Price: $#{toy_data['average price']}\n")
+  # Print the average discount (% or $) based off the average sales price
+  $report_file.write("Average Discount: #{toy_data['average discount']}%\n")
+  $report_file.write("\n")
 end
 
 # Print "Brands" in ascii art
@@ -87,14 +102,18 @@ def print_brands_header
   $report_file.write("\n")
 end
 
-def print_brands_report
-  brands = $products_hash["items"].map { |item| item["brand"] }.uniq
-  # For each brand in the data set:
-  brands.each do |brand|
-    # Print the name of the brand
-	print_with_borders(brand)
-	
-	brand_info = $products_hash["items"].select { |item| item["brand"] == brand }
+def brands_data
+  brand_names = $products_hash["items"].map { |item| item["brand"] }.uniq
+  brand_names.each do |brand_name|
+    brand_data = calculate_brand_data(brand_name)
+	print_brand_data(brand_data)
+  end
+end
+
+def calculate_brand_data(brand_name)
+  brand_calculations = {}
+
+  brand_info = $products_hash["items"].select { |item| item["brand"] == brand_name }
 
     toy_count = 0
     total_item_cost = 0
@@ -103,19 +122,33 @@ def print_brands_report
     brand_info.each do |item|
       toy_count += item["stock"]
       total_item_cost += item["full-price"].to_f
-	  item["purchases"].each do |sale|
+      item["purchases"].each do |sale|
 	    total_revenue += sale["price"]
       end
-	end
+    end
 
-	# Count and print the number of the brand's toys we stock
-	$report_file.write("Toys in Stock: #{toy_count}\n")
-	# Calculate and print the average price of the brand's toys
-	$report_file.write("Average toy price: $#{(total_item_cost/brand_info.length).round(2)}\n")
-    # Calculate and print the total sales volume of all the brand's toys combined
-	$report_file.write("Total revenue: $#{total_revenue.round(2)}\n")
-	$report_file.write("\n")
-  end
+  brand_calculations['name'] = brand_name
+  brand_calculations['toy count'] = toy_count
+  brand_calculations['average toy price'] = (total_item_cost/brand_info.length).round(2)
+  brand_calculations['total revenue'] = total_revenue.round(2)
+  
+  brand_calculations
+end
+
+def print_brand_data(brand_data)
+  # Print the name of the brand
+  print_with_borders(brand_data['name'])
+  # Print the number of the brand's toys we stock
+  $report_file.write("Toys in Stock: #{brand_data['toy count']}\n")
+  # Print the average price of the brand's toys
+  $report_file.write("Average toy price: $#{brand_data['average toy price']}\n")
+  # Print the total sales volume of all the brand's toys combined.
+  $report_file.write("Total revenue: $#{brand_data['total revenue']}\n")
+  $report_file.write("\n")
+end
+
+def close_file
+  $report_file.close
 end
 
 def start
@@ -123,9 +156,10 @@ def start
   print_sales_header
   print_date
   print_products_header
-  print_products_report
+  products_data
   print_brands_header
-  print_brands_report
+  brands_data
+  close_file
 end
 	
 start
