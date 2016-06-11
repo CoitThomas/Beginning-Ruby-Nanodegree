@@ -1,0 +1,93 @@
+commit ff7a578e97d16f41d45eb928d9040f4ed84b15cb
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sat Jun 11 16:28:09 2016 -0500
+
+    Change file destination for report.txt.
+    Add close_file method.
+    Refactor print_ products_data into 3 methods.
+    Refactor print_brands_data into 3 methods.
+
+commit 10a6e3ddf95b06f33bfabce4f351ec639fe5313b
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Thu Jun 9 23:00:41 2016 -0500
+
+    Output git log to log.txt.
+
+commit 7c8730d9dfe53177e0c406afcab8605e0d3c3a18
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Thu Jun 9 22:51:21 2016 -0500
+
+    Add print_brands_report method.
+    Write output to report.txt.
+
+commit cfeb7bba9afe963deef546e558758024426f3ebb
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Mon Jun 6 22:32:36 2016 -0500
+
+    Add print_products_report method and print_with_borders helper method.
+
+commit 411aff02d331a85dc7071373abd770a51d7b6e8f
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Mon May 30 15:07:55 2016 -0500
+
+    Add print_date, print_products_header, print_brands_header, and start methods to app.rb in toycity2 project.
+
+commit 7d2f3682fbf6d5ced6ab3003d3f42fdcd15c2284
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Mon May 30 14:54:25 2016 -0500
+
+    Add print_sales_report method to toycity2.
+
+commit 661b89ef4f83f26b25fc7a657b792706a32161be
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sun May 22 21:49:29 2016 -0500
+
+    Add 'setup_files' method to app.rb of toycity2 project.
+
+commit 4e97751d9402e6ecac29550dcb67ee326b9ecf22
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sat May 21 18:39:23 2016 -0500
+
+    Initial commit for toycity2.
+
+commit c3f5f31b4b439302d0aeb5ea55fb045b5ff42714
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sat May 21 18:08:52 2016 -0500
+
+    Add fish haiku to fish.txt
+
+commit becb4b5c460edf2757083c463e1762de8dbc18d2
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sat May 21 18:02:09 2016 -0500
+
+    Add fish.txt
+
+commit 7991e98fa3f0ea9f75719a4f21fb3da5b8fc88a2
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sat May 21 18:01:24 2016 -0500
+
+    Add puppies.txt
+
+commit fbc0de8534fedd607214928e582960eac75041e0
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sun May 8 09:24:35 2016 -0500
+
+    'ToyCity Report Generator 1' Submission.
+
+commit 3242ad8f599e993e610a34ca73d8f4d9ed41b6a4
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sun May 1 15:39:39 2016 -0500
+
+    Add initial toycity files.
+
+commit f9c1b9afe0d22af121a2b0b0abb7b6743ef653d3
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Thu Apr 21 21:38:50 2016 -0500
+
+    Add newlines to text files.
+
+commit 36acd5448e30bbc0e13d4a6e570f37c38b04e740
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Thu Apr 21 21:23:51 2016 -0500
+
+    'Roobiedocks Adventure' submission.
