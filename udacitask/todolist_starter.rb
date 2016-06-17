@@ -8,5 +8,10 @@ class TodoList
 end
 
 class Item
-    # methods and stuff go here
+  attr_reader :description, :completion_status
+  
+  def initialize(item_description)
+    @description = item_description
+    @completion_status = false
+  end
 end
