@@ -25,9 +25,13 @@ to_do_list.delete_item(2)
 to_do_list.print
 
 # Update the completion status of the first item to complete
+to_do_list.complete_item(1)
 
 # Print the list
+to_do_list.print
 
 # Update the title of the list
+to_do_list.change_list_title("Cora's To Do List:")
 
 # Print the list
+to_do_list.print

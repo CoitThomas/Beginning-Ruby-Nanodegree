@@ -1,7 +1,6 @@
 class ToDoList
   attr_reader :title, :items
-  attr_accessor :size
-
+  
   # Initialize todo list with a title and no items
   def initialize(list_title)
     @title = list_title
@@ -19,7 +18,17 @@ class ToDoList
 	item_position -= 1
 	@items.delete_at(item_position)
   end
-	  
+
+  # Marks an Item at a given position as "completed" in the ToDoList.
+  def complete_item(item_position)
+    item_position -= 1
+    @items[item_position].mark_complete
+  end
+
+  def change_list_title(new_list_title)
+    @title = new_list_title
+  end
+  
   # Prints all the current Items in the ToDoList.
   def print
     puts
@@ -40,5 +49,10 @@ class Item
   def initialize(item_description)
     @description = item_description
     @completion_status = false
+  end
+
+  # Changes the completion_status of an Item to true.  
+  def mark_complete
+    @completion_status = true
   end
 end
