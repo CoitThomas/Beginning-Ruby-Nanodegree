@@ -1,7 +1,7 @@
 require_relative 'todolist.rb'
 
 # Creates a new todo list
-to_do_list = ToDoList.new("Coit's To Do List:")
+to_do_list = ToDoList.new("Coit's To Do List")
 
 # Add four new items
 to_do_list.add_item("Organize Closet")
@@ -31,7 +31,7 @@ to_do_list.complete_item(1)
 to_do_list.print
 
 # Update the title of the list
-to_do_list.change_list_title("Cora's To Do List:")
+to_do_list.change_list_title("Hyewon's To Do List")
 
 # Print the list
 to_do_list.print

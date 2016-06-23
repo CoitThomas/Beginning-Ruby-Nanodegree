@@ -28,10 +28,18 @@ class ToDoList
   def change_list_title(new_list_title)
     @title = new_list_title
   end
+
+  # Prints the title with a border
+  def print_title
+    display_width = 56
+    puts "=" * display_width
+	puts ("#{@title}:").center(display_width)
+	puts "=" * display_width
+  end
   
   # Prints all the current Items in the ToDoList.
   def print
-    puts
+    print_title
 	count = 0
     @items.each do |item|
       count += 1
