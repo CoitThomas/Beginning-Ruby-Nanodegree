@@ -14,12 +14,21 @@ class ToDoList
     @items.push(item)
   end
   
+  # Removes an Item at a given position from the ToDoList.
+  def delete_item(item_position)
+	item_position -= 1
+	@items.delete_at(item_position)
+  end
+	  
+  # Prints all the current Items in the ToDoList.
   def print
-    count = 0
+    puts
+	count = 0
     @items.each do |item|
       count += 1
     printf "%s. %-35s Completed?: %s\n", count, item.description, item.completion_status
     end
+	puts
   end
 end
 

@@ -13,12 +13,16 @@ to_do_list.add_item("Fix Leaky Faucet")
 to_do_list.print
 
 # Delete the first item
+to_do_list.delete_item(1)
 
 # Print the list
+to_do_list.print
 
 # Delete the second item
+to_do_list.delete_item(2)
 
 # Print the list
+to_do_list.print
 
 # Update the completion status of the first item to complete
 
