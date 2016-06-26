@@ -24,6 +24,24 @@ class ToDoList
     item_position -= 1
     @items[item_position].mark_complete
   end
+  
+  def sort_by_date
+    dates = Array.new
+	@items.each do |item|
+	  dates.push(item.due_date)
+	end
+	sorted_dates = dates.sort
+	sorted_items = Array.new
+	sorted_dates.each do |sorted_date|
+	  @items.each do |item|
+	    if item.due_date == sorted_date
+		  sorted_items.push(item)
+		  @items.delete(item)
+		end
+	  end
+	end
+	@items = sorted_items
+  end
 
   def change_list_title(new_list_title)
     @title = new_list_title.upcase
@@ -31,19 +49,19 @@ class ToDoList
 
   # Prints the title with a border
   def print_title
-    display_width = 60
+    display_width = 79
     puts "=" * display_width
 	puts ("#{@title}:").center(display_width)
 	puts "=" * display_width
   end
   
   def print_column_headers
-    display_width = 60
+    display_width = 79
 	column1 = "No."
 	column2 = "Description"
 	column3 = "Due"
 	column4 = "Completed"
-	printf "%s %-30s %-15s %s\n", column1, column2, column3, column4
+	printf "%s %-49s %-15s %s\n", column1, column2, column3, column4
 	puts "-" * display_width
   end
   
@@ -88,6 +106,6 @@ class Item
   end
     
   def print(count)
-    printf "%2s%s %-30s %-19s %s\n", count, ".", description, format_date(due_date), complete?
+    printf "%2s%s %-49s %-17s %s\n", count, ".", description, format_date(due_date), complete?
   end
 end
