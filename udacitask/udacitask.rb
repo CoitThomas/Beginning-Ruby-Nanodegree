@@ -54,3 +54,5 @@ to_do_list.sort_by_date
 
 # Print the list
 to_do_list.print
+
+to_do_list.write_to_file
