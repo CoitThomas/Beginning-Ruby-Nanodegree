@@ -1,0 +1,61 @@
+commit 05ead68c0404760edeaa98981961c667b443eb8f
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sun Jun 26 13:57:39 2016 -0500
+
+    Implement write to file feature for ToDoList.
+
+commit e5620623e30a7fcd792e4f7e5980882e4a070fd3
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sat Jun 25 23:16:21 2016 -0500
+
+    Implement sort_by_date feature for ToDoList.
+
+commit c330082e8fe1d0ee17168c78591934823711bc5a
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Sat Jun 25 15:52:01 2016 -0500
+
+    Implement due_date display feature for Item.
+    Add column headers to ToDoList
+
+commit 4df13a441e1a8d9808c8c2eb3701f6d469cedb80
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Wed Jun 22 20:35:26 2016 -0500
+
+    Add print_title method to ToDoList class.
+
+commit 61df00dc70748a42f01029edf51dd9ce8f79e4ee
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Wed Jun 22 20:15:17 2016 -0500
+
+    Add complete_item & change_list_title methods to ToDoList.
+
+commit ed40f0da480b25041bda78eeeb2557be792bc0c4
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Wed Jun 22 19:15:56 2016 -0500
+
+    Add delete_item method to the ToDoList class.
+
+commit 4bb0bf017423acbe69c20d3a5aaaea1bcd78d2b0
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Tue Jun 21 23:08:19 2016 -0500
+
+    Add print function to ToDoList class.
+
+commit 10a6625d7b6d89197ced2262e5d77e080efad931
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Thu Jun 16 23:20:58 2016 -0500
+
+    Add basic functionality to Item class.
+
+commit 37d0f0d1a293afe39ccd41872dffe197d95e24bb
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Thu Jun 16 23:14:16 2016 -0500
+
+    Add basic functionality to TodoList class.
+
+commit 8af522a97d86fc2346de57e0e4b0e8abb435e7e9
+Author: Coit Scharringhausen <coit.scharringhausen@gmail.com>
+Date:   Wed Jun 15 23:02:10 2016 -0500
+
+    Initial commit of udacitask project.
+
