@@ -27,21 +27,7 @@ class ToDoList
   
   # Sort the Items in the ToDoList by their due_date.
   def sort_by_date
-    dates = Array.new
-	@items.each do |item|
-	  dates.push(item.due_date)
-	end
-	sorted_dates = dates.sort
-	sorted_items = Array.new
-	sorted_dates.each do |sorted_date|
-	  @items.each do |item|
-	    if item.due_date == sorted_date
-		  sorted_items.push(item)
-		  @items.delete(item)
-		end
-	  end
-	end
-	@items = sorted_items
+    @items.sort_by! { |item| item.due_date }
   end
 
   # Change the title of the ToDoList
